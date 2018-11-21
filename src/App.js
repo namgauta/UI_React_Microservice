@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
+
+class App extends React.Component {
+ 
+  componentDidMount(){
+    console.log(this.props.fetchCarData());
+    this.props.fetchAccountsData()
+  }
+  
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+    return <div className="container">
+    
+    
+     <nav className="nav nav-tabs">
+            <a href="/" className="btn btn-primary">All User Page</a>
+            
+            
+     </nav>
+   
+    
+  
+    {React.cloneElement(this.props.children,this.props)}
+</div>
   }
 }
 

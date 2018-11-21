@@ -1,12 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import { render } from 'react-dom'
+import  {Route} from 'react-router'
+import { Router } from 'react-router'
+import {browserHistory} from 'react-router'
+import { Provider } from 'react-redux'
+import store from './store'
+import Apps from './MainScript';
+import AllUsers from './AllUsersComponent';
+import {IndexRoute} from 'react-router'
+import User from'./UserComponent'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import NewUser from './NewUserComponent'
+render(
+    <Provider store={store}>
+         <Router history={browserHistory} >
+         <Route path='/' component={Apps}>
+         <IndexRoute component={AllUsers}></IndexRoute>
+         <Route path='/view/:id' component={User}></Route>
+       
+         </Route>
+         </Router>
+    </Provider>,
+    document.getElementById("root")
+)
